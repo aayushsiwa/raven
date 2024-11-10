@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/tech-articles.js",
+            "use": "@vercel/node"
+        }
+    ]
+}
