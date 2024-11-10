@@ -1,17 +1,13 @@
 const express = require("express");
+const app = express();
 const axios = require("axios");
 const cheerio = require("cheerio");
-const cors = require("cors"); // Import the cors package
+const cors = require("cors");
 
-const app = express();
-const PORT = 80;
-
-// Enable CORS for all routes (or configure it as needed)
-app.use(cors()); // This enables CORS for all requests
+app.use(cors());
 
 const VERGE_TECH_URL = "https://www.theverge.com/tech";
 
-// Function to fetch and parse articles from The Verge
 async function fetchVergeTechArticles() {
     try {
         const { data } = await axios.get(VERGE_TECH_URL);
@@ -52,7 +48,10 @@ async function fetchVergeTechArticles() {
     }
 }
 
-app.get("/api/tech-articles", async (req, res) => {
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
+app.get("/verge-tech", async (req, res) => {
+    // res.send("hi this is tech articles");
     try {
         const articles = await fetchVergeTechArticles();
         res.json(articles);
@@ -61,11 +60,6 @@ app.get("/api/tech-articles", async (req, res) => {
     }
 });
 
-app.get("/", (req, res) => {
-    res.json({ message: "Hello, world!" });
-});
+app.listen(5001, () => console.log("Server ready on port 3000."));
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+module.exports = app;
