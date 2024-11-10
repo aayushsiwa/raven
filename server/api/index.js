@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const cors = require('cors');  // Import the cors package
 
 const app = express();
-const PORT = 5000;
+const PORT = 80;
 
 // Enable CORS for all routes (or configure it as needed)
 app.use(cors());  // This enables CORS for all requests
