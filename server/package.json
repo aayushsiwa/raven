@@ -1,0 +1,22 @@
+{
+  "name": "news_api",
+  "version": "1.0.0",
+  "description": "The Verge Tech News API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "dependencies": {
+    "axios": "^1.7.7",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "react-native-paper": "^5.12.5",
+    "scrape-it": "^5.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
