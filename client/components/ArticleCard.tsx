@@ -3,8 +3,15 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Linking } from "react-native";
 
 // ArticleCard Component to display individual article details
-const ArticleCard = ({ article }) => {
-    const handleArticlePress = (url) => {
+interface Article {
+    title: string;
+    author: string;
+    published: string;
+    link: string;
+}
+
+const ArticleCard = ({ article }: { article: Article }) => {
+    const handleArticlePress = (url:string) => {
         Linking.openURL(url).catch((err) =>
             console.error("Failed to open URL:", err)
         );
@@ -16,8 +23,7 @@ const ArticleCard = ({ article }) => {
                 <Text style={styles.title}>{article.title}</Text>
             </TouchableOpacity>
             <Text style={styles.author}>By {article.author}</Text>
-            <Text style={styles.date}>{article.date}</Text>
-            {/* <Text style={styles.category}>Category: {article.category}</Text> */}
+            <Text style={styles.date}>Published: {article.published}</Text>
         </View>
     );
 };
@@ -44,10 +50,6 @@ const styles = StyleSheet.create({
         color: "gray",
     },
     date: {
-        fontSize: 12,
-        color: "gray",
-    },
-    category: {
         fontSize: 12,
         color: "gray",
     },
