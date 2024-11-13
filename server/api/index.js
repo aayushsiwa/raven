@@ -12,17 +12,20 @@ async function fetchVergeTechArticles() {
     try {
         const { data } = await axios.get(VERGE_TECH_URL);
         const $ = cheerio.load(data);
-
+        // console.log("data", data);
         const articles = [];
 
         $(".duet--content-cards--content-card").each((index, element) => {
+            // console.log("element", element);
             const title = $(element).find("h2 a").text().trim();
             const link = $(element).find("h2 a").attr("href");
             const author = $(element)
+                // .find(".duet--content-cards--content-card-group a")
                 .find(".duet--content-cards--content-card-group a")
                 .first()
                 .text()
                 .trim();
+                // console.log("author", author);
             const date = $(element).find("time").attr("datetime");
             const category = $(element)
                 .find(".duet--content-cards--content-card-group a")
